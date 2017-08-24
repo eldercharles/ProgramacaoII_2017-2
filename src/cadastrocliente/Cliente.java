@@ -1,4 +1,4 @@
-package br.estacio.programacao.dojo;
+package cadastrocliente;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

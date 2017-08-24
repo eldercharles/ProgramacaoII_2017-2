@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.estacio.programacao.visao;
+package endereco;
 
-import br.estacio.programacao.model.Endereco;
+import endereco.Endereco;
 import javax.swing.JOptionPane;
 
 /**
@@ -111,7 +111,7 @@ public class ViewEndereco extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(btnEnviarDados)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

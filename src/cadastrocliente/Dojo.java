@@ -1,7 +1,7 @@
-package br.estacio.programacao.dojo;
+package cadastrocliente;
 
 
-import br.estacio.programacao.dojo.Cliente;
+import cadastrocliente.Cliente;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,7 +47,7 @@ public class Dojo extends javax.swing.JFrame {
         cbEducacao = new javax.swing.JCheckBox();
         cbColinaria = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         btnEnviar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -110,7 +110,7 @@ public class Dojo extends javax.swing.JFrame {
 
         jLabel6.setText("Time de Futebol:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "São Paulo", "Palmeiras", "Ponte Preta", "Coritiba" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "São Paulo", "Palmeiras", "Ponte Preta", "Coritiba" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
