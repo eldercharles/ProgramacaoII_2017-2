@@ -15,26 +15,31 @@ import javax.swing.WindowConstants;
 
 
 public class TestaEventos extends JFrame implements ActionListener {
-    private JButton but;
-    private JLabel texto;
+    private JButton botaoUm, botaoDois;
+    private JLabel textoUm, textoDois;
     private JPanel painel;
-    private int cont;
+    private int contUm, contDois;
 
     public TestaEventos(String title){
         super(title);
         this.setTitle(title);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        cont = 0;
-        but = new JButton("Clique aqui");
-        texto = new JLabel("Quantidade: ");
+        contUm = 0;
+        contDois =0;
+        botaoUm = new JButton("Clique aqui 1");
+        botaoDois = new JButton("Clique aqui 2");
+        textoUm = new JLabel("QuantidadeUm: ");
+        textoDois = new JLabel("QuantidadeDois: ");
         painel = new JPanel();
         painel.setLayout(new FlowLayout());
         
-        but.addActionListener(this);
+        botaoUm.addActionListener(this);
+        botaoDois.addActionListener(this);
         
-        painel.add(but);
-        painel.add(texto);
-        
+        painel.add(botaoUm);
+        painel.add(botaoDois);
+        painel.add(textoUm);
+        painel.add(textoDois);
         
         
         this.setLayout(new GridLayout(2, 2));
@@ -45,8 +50,15 @@ public class TestaEventos extends JFrame implements ActionListener {
   
     @Override
     public void actionPerformed(ActionEvent e) {
-        cont++;
-        texto.setText("Quantidade: "+cont);
+        
+        if (e.getSource() == botaoUm) {
+            contUm++;
+        }
+        textoUm.setText("Quantidade de cliques em 1: "+contUm);
+    } else {
+            contDois++;
+          textoDois.setText("Quantidade de cliques em 2: "+contDois);
+        }
     }
     
     public static void main (String[] args){
