@@ -53,9 +53,10 @@ public class TestaEventos extends JFrame implements ActionListener {
         
         if (e.getSource() == botaoUm) {
             contUm++;
-        }
+       
         textoUm.setText("Quantidade de cliques em 1: "+contUm);
-    } else {
+     }
+        else  {
             contDois++;
           textoDois.setText("Quantidade de cliques em 2: "+contDois);
         }
