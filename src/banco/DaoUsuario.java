@@ -2,47 +2,80 @@ package banco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Marcelo
+ */
 public class DaoUsuario {
-
+    
     Connection conexao = Conexao.criarConexao();
-
-    // Listar 
-    public List<Usuario> listarUsuarios() {
-        return null;
-    }
-
-    //Salvar
-    public int salvarUsuario(Usuario usuario) {
+    
+    //salvar
+    public int salvarUsuario(Usuario usuario){
+        // Instrução SQL que será executada no banco
         String sql = "INSERT "
-                + "INTO "
-                + "tb_usuario (nome, sobrenome) "
-                + "VALUES (?, ?)";
+                    + "INTO "
+                    + "tb_usuario (nome, sobrenome)"
+                    + "VALUES (?, ?)";
         try {
+            // Objeto PreparedStatement é um objeto que prepara a instrução de sql
+            // ou seja, preenche os valores
             PreparedStatement preparacaoDaInstrucao = conexao.prepareStatement(sql);
-            // De acordo com a posicao do ponto de interrogacao na SQL e o tipo do dado
+            //De acordo com a posicao do ponto de interrogacao na SQL e o tipo do dado
             preparacaoDaInstrucao.setString(1, usuario.getNome());
             preparacaoDaInstrucao.setString(2, usuario.getSobrenome());
-
-            return preparacaoDaInstrucao.executeUpdate();
-        } catch (SQLException ex) {
             
+            return preparacaoDaInstrucao.executeUpdate();
+            
+        } catch (SQLException ex) {
             ex.printStackTrace();
-            return - 1;
+            return -1;
         }
     }
 
-    //Excluir
-    public boolean excluirUsuario(Usuario usuario) {
+    //listar
+    public List<Usuario> listarUsuarios(){
+        List<Usuario> listaParaRetorno = new ArrayList<Usuario>();
+        String sql = "SELECT * FROM tb_usuario";
+        
+        try {
+            PreparedStatement instrucaoSelecao = conexao.prepareStatement(sql);
+            ResultSet resultado = instrucaoSelecao.executeQuery();
+            
+            while(resultado.next()){
+                Usuario usu = new Usuario();
+                usu.setCodigo(resultado.getInt("id_usuario"));
+                usu.setNome(resultado.getString("nome"));
+                usu.setSobrenome(resultado.getString("Sobrenome"));
+                listaParaRetorno.add(usu);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+        return listaParaRetorno;
+    }
+    
+    
+    
+    
+    //excluir
+    public boolean excluirUsuario(Usuario usuario){
+    
         return false;
     }
-
-    //Atualizar
-    public boolean atualizarUsuario(Usuario usuario) {
+    
+    //atualizar
+    public boolean atualizarUsuario(Usuario usuario){
+    
         return false;
     }
 }
